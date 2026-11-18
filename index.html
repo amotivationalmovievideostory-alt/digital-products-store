@@ -1,20 +1,21 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DigitalNest — Premium AI & Creator Assets</title>
+  <title>DigitalNest — Premium AI & Creator Assets Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #090b10;
-      --bg-card: #111520;
+      --bg-dark: #07090e;
+      --bg-card: #0f131f;
       --border-subtle: rgba(255, 255, 255, 0.08);
       --primary: #6366f1;
-      --primary-glow: rgba(99, 102, 241, 0.35);
+      --primary-glow: rgba(99, 102, 241, 0.4);
       --accent: #38bdf8;
+      --success: #10b981;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -33,14 +34,25 @@
       overflow-x: hidden;
     }
 
+    /* Top Announcement Bar */
+    .announcement-bar {
+      background: linear-gradient(90deg, #4f46e5, #6366f1, #38bdf8);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
     .glow-bg {
       position: fixed;
-      top: -150px;
+      top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 800px;
+      width: 900px;
       height: 500px;
-      background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, rgba(9,11,16,0) 70%);
+      background: radial-gradient(circle, rgba(99,102,241,0.16) 0%, rgba(7,9,14,0) 70%);
       z-index: -1;
       pointer-events: none;
     }
@@ -49,10 +61,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(9, 11, 16, 0.85);
+      background: rgba(7, 9, 14, 0.85);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 18px 8%;
+      padding: 16px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -65,12 +77,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      color: white;
+      text-decoration: none;
     }
 
     .logo-badge {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       display: inline-flex;
       align-items: center;
@@ -101,8 +115,8 @@
     .nav-cta {
       background: rgba(255, 255, 255, 0.08);
       color: var(--text-main) !important;
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 8px 18px;
+      border-radius: 9px;
       border: 1px solid var(--border-subtle);
     }
 
@@ -111,16 +125,19 @@
       border-color: var(--primary);
     }
 
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 95px 8% 70px;
-      max-width: 960px;
+      padding: 90px 8% 60px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .pill {
-      display: inline-block;
-      padding: 6px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
       border-radius: 999px;
       background: rgba(99, 102, 241, 0.12);
       border: 1px solid rgba(99, 102, 241, 0.35);
@@ -130,11 +147,19 @@
       margin-bottom: 22px;
     }
 
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--success);
+    }
+
     .hero h1 {
-      font-size: clamp(36px, 5vw, 58px);
+      font-size: clamp(38px, 5.5vw, 60px);
       font-weight: 800;
       letter-spacing: -1.5px;
-      line-height: 1.12;
+      line-height: 1.1;
       margin-bottom: 20px;
       background: linear-gradient(to right, #ffffff, #cbd5e1);
       -webkit-background-clip: text;
@@ -144,7 +169,7 @@
     .hero p {
       font-size: 18px;
       color: var(--text-muted);
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto 34px;
     }
 
@@ -190,26 +215,33 @@
       background: #1a2030;
     }
 
+    /* Trust Strip */
     .trust-strip {
       display: flex;
       justify-content: center;
-      gap: 36px;
+      gap: 40px;
       flex-wrap: wrap;
       padding: 24px 8%;
       border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
-      background: rgba(17, 21, 32, 0.45);
+      background: rgba(15, 19, 31, 0.5);
       color: var(--text-muted);
       font-size: 14px;
       font-weight: 500;
     }
 
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .trust-item span {
       color: var(--accent);
-      margin-right: 6px;
       font-weight: 700;
     }
 
+    /* Products Section */
     .section {
       padding: 80px 8%;
       max-width: 1240px;
@@ -218,7 +250,7 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
 
     .section-header h2 {
@@ -233,9 +265,36 @@
       font-size: 16px;
     }
 
+    /* Filter Buttons */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 28px;
     }
 
@@ -255,7 +314,7 @@
     }
 
     .card-visual {
-      height: 190px;
+      height: 200px;
       padding: 24px;
       display: flex;
       flex-direction: column;
@@ -280,7 +339,7 @@
     }
 
     .mockup-title {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.4px;
@@ -361,16 +420,17 @@
       font-weight: 600;
       font-size: 14px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.1s;
     }
 
     .buy-btn:hover {
       background: #4f46e5;
+      transform: scale(1.03);
     }
 
-    /* Testimonials Section */
+    /* Testimonials */
     .testimonials {
-      background: rgba(17, 21, 32, 0.6);
+      background: rgba(15, 19, 31, 0.6);
       border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
       padding: 80px 8%;
@@ -410,159 +470,4 @@
     }
 
     .author-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    /* FAQ Section */
-    .faq-section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 80px 8%;
-    }
-
-    .faq-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 16px;
-    }
-
-    .faq-item h4 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-
-    .faq-item p {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    /* Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(6px);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal {
-      background: #131826;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      max-width: 440px;
-      width: 100%;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .modal h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .modal p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-
-    .close-btn {
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      padding: 11px 18px;
-      border-radius: 9px;
-      cursor: pointer;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 40px 8%;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 640px) {
-      nav a:not(.nav-cta) { display: none; }
-      .hero { padding-top: 65px; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="glow-bg"></div>
-
-  <header>
-    <div class="logo">
-      <span class="logo-badge">D</span> DigitalNest
-    </div>
-    <nav>
-      <a href="#products">Products</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Support</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="pill">✦ Trusted by Creators & Brands Worldwide</div>
-    <h1>Next-Gen Digital Assets to Scale Your Content</h1>
-    <p>High-converting AI prompt vaults, viral video ad frameworks, and creator templates built for modern digital brands.</p>
-    <div class="hero-buttons">
-      <a href="#products" class="btn-primary">Browse Digital Store</a>
-      <a href="#reviews" class="btn-secondary">Client Reviews</a>
-    </div>
-  </section>
-
-  <div class="trust-strip">
-    <div class="trust-item"><span>⚡</span> Instant Digital Download</div>
-    <div class="trust-item"><span>🔒</span> Secure Global Checkout</div>
-    <div class="trust-item"><span>📜</span> 100% Commercial License</div>
-    <div class="trust-item"><span>🔄</span> Lifetime Free Updates</div>
-  </div>
-
-  <section class="section" id="products">
-    <div class="section-header">
-      <h2>Featured Digital Products</h2>
-      <p>Ready-to-use resources designed to save hours of production time.</p>
-    </div>
-
-    <div class="grid">
-      <!-- Product 1 -->
-      <div class="card">
-        <div class="card-visual visual-1">
-          <span class="badge-tag">🔥 BEST SELLER</span>
-          <div>
-            <div class="mockup-title">AI UGC & Video Ads Vault</div>
-            <div class="mockup-sub">250+ Tested Prompts • PDF & Notion</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3>AI UGC & Video Ads Prompt Vault</h3>
-          <p>Generate hyper-realistic spokesperson videos, product commercials, and cinematic B-roll in minutes.</p>
-          <ul class="features">
-            <li>250+ Copy-Paste AI Video Prompts</li>
-            <li>Character Consistency Blueprint</li>
-            <li>Commercial Usage Rights Included</li>
-          </ul>
-          <div class="card-footer">
-            <div class="price-box">
-              <span class="old-price">$39</span>
-              <span class="price">$19</span>
-            </div>
+      font-size: 1 
