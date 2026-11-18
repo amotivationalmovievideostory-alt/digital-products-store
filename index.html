@@ -1,73 +1,592 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DigitalNest - Digital Products</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f8f7fc;color:#25213a}
-header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;background:white}
-.logo{font-size:25px;font-weight:bold;color:#7045d8}
-nav a{margin-left:18px;text-decoration:none;color:#333}
-.hero{text-align:center;padding:85px 20px;background:#eee8ff}
-.hero h1{font-size:42px}
-.hero p{font-size:18px;color:#666}
-.hero a,.buy{background:#7045d8;color:white;padding:13px 22px;border:0;border-radius:8px;text-decoration:none;cursor:pointer}
-main{padding:45px 7%}
-h2{text-align:center}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.product{background:white;padding:22px;border-radius:14px;text-align:center;margin-top:20px}
-.art{font-size:55px;background:#eee8ff;padding:25px;border-radius:10px}
-.price{font-size:22px;font-weight:bold;margin:18px}
-footer{text-align:center;background:#25213a;color:white;padding:25px;margin-top:40px}
-@media(max-width:600px){header{flex-wrap:wrap}nav{margin-top:15px}.hero h1{font-size:32px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DigitalNest — Premium AI & Creator Assets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090b10;
+      --bg-card: #111520;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.35);
+      --accent: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Glow */
+    .glow-bg {
+      position: fixed;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, rgba(9,11,16,0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 11, 16, 0.8);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: white;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-cta {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main) !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .nav-cta:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 95px 8% 70px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px var(--primary-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 14px 26px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid var(--border-subtle);
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #1a2030;
+    }
+
+    /* Trust Strip */
+    .trust-strip {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding: 24px 8%;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(17, 21, 32, 0.45);
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .trust-item span {
+      color: var(--accent);
+      margin-right: 6px;
+      font-weight: 700;
+    }
+
+    /* Products Section */
+    .section {
+      padding: 80px 8%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+
+    .card-visual {
+      height: 190px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .visual-1 { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+    .visual-2 { background: linear-gradient(135deg, #0f172a, #0369a1); }
+    .visual-3 { background: linear-gradient(135deg, #1e1b4b, #581c87); }
+
+    .badge-tag {
+      align-self: flex-start;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .mockup-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.4px;
+    }
+
+    .mockup-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .card-body {
+      padding: 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .card-body p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .features li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-box .old-price {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-right: 6px;
+    }
+
+    .price-box .price {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .buy-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .buy-btn:hover {
+      background: #4f46e5;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal {
+      background: #131826;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      max-width: 440px;
+      width: 100%;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .modal h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .modal p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 11px 18px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 8%;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      nav a:not(.nav-cta) { display: none; }
+      .hero { padding-top: 65px; }
+    }
+  </style>
 </head>
 <body>
-<header>
-<div class="logo">DigitalNest</div>
-<nav>
-<a href="#home">Home</a>
-<a href="#products">Products</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
-<section class="hero" id="home">
-<h1>Discover Digital Products</h1>
-<p>Explore useful ebooks, templates and digital resources.</p>
-<a href="#products">Explore Products</a>
-</section>
-<main id="products">
-<h2>Our Featured Products</h2>
-<div class="products">
-<div class="product">
-<div class="art">📘</div>
-<h3>Ultimate E-book</h3>
-<p>A useful digital learning guide.</p>
-<div class="price">$9.00</div>
-<button class="buy" onclick="alert('Demo product selected!')">View Product</button>
-</div>
-<div class="product">
-<div class="art">🎨</div>
-<h3>Creative Templates</h3>
-<p>Ready-to-use creative templates.</p>
-<div class="price">$15.00</div>
-<button class="buy" onclick="alert('Demo product selected!')">View Product</button>
-</div>
-<div class="product">
-<div class="art">📂</div>
-<h3>Digital Planner</h3>
-<p>Organize your goals and tasks.</p>
-<div class="price">$12.00</div>
-<button class="buy" onclick="alert('Demo product selected!')">View Product</button>
-</div>
-</div>
-</main>
-<footer id="contact">
-<p>Contact: hello@digitalnest.example</p>
-<p>© 2026 DigitalNest. All rights reserved.</p>
-</footer>
+
+  <div class="glow-bg"></div>
+
+  <header>
+    <div class="logo">
+      <span class="logo-badge">D</span> DigitalNest
+    </div>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#benefits">Why Us</a>
+      <a href="#contact" class="nav-cta">Support</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="pill">✦ Trusted by Creators & Brands Worldwide</div>
+    <h1>Next-Gen Digital Assets to Scale Your Content</h1>
+    <p>High-converting AI prompt vaults, viral video ad frameworks, and creator templates built for modern digital brands.</p>
+    <div class="hero-buttons">
+      <a href="#products" class="btn-primary">Browse Digital Store</a>
+      <a href="#benefits" class="btn-secondary">How It Works</a>
+    </div>
+  </section>
+
+  <div class="trust-strip" id="benefits">
+    <div class="trust-item"><span>⚡</span> Instant Digital Download</div>
+    <div class="trust-item"><span>🔒</span> Secure Global Checkout</div>
+    <div class="trust-item"><span>📜</span> 100% Commercial License</div>
+    <div class="trust-item"><span>🔄</span> Lifetime Free Updates</div>
+  </div>
+
+  <section class="section" id="products">
+    <div class="section-header">
+      <h2>Featured Digital Products</h2>
+      <p>Ready-to-use resources designed to save hours of production time.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Product 1 -->
+      <div class="card">
+        <div class="card-visual visual-1">
+          <span class="badge-tag">🔥 BEST SELLER</span>
+          <div>
+            <div class="mockup-title">AI UGC & Video Ads Vault</div>
+            <div class="mockup-sub">250+ Tested Prompts • PDF & Notion</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>AI UGC & Video Ads Prompt Vault</h3>
+          <p>Generate hyper-realistic spokesperson videos, product commercials, and cinematic B-roll in minutes.</p>
+          <ul class="features">
+            <li>250+ Copy-Paste AI Video Prompts</li>
+            <li>Character Consistency Blueprint</li>
+            <li>Commercial Usage Rights Included</li>
+          </ul>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="old-price">$39</span>
+              <span class="price">$19</span>
+            </div>
+            <button class="buy-btn" onclick="openCheckout('AI UGC & Video Ads Prompt Vault', '$19')">Get Access</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+        <div class="card-visual visual-2">
+          <span class="badge-tag">⚡ CREATOR PACK</span>
+          <div>
+            <div class="mockup-title">100+ Viral Hooks & VSL Scripts</div>
+            <div class="mockup-sub">High-Converting Frameworks • DOCX & PDF</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Viral Hooks & VSL Scripts Bundle</h3>
+          <p>Stop the scroll in the first 3 seconds with proven psychological hooks for TikTok, Reels, and Shorts.</p>
+          <ul class="features">
+            <li>100+ Plug-and-Play Video Hooks</li>
+            <li>15 High-Converting E-Commerce VSLs</li>
+            <li>Works for Any Niche or Product</li>
+          </ul>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="old-price">$29</span>
+              <span class="price">$15</span>
+            </div>
+            <button class="buy-btn" onclick="openCheckout('Viral Hooks & VSL Scripts Bundle', '$15')">Get Access</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <div class="card-visual visual-3">
+          <span class="badge-tag">🎬 PRO EDITION</span>
+          <div>
+            <div class="mockup-title">Short-Form Editing Master Kit</div>
+            <div class="mockup-sub">SFX, Presets & Workflow • ZIP Archive</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Short-Form Editing & SFX Master Kit</h3>
+          <p>Everything you need to edit high-retention vertical videos with crisp sound design and clean pacing.</p>
+          <ul class="features">
+            <li>120+ Studio Whooshes, Risers & SFX</li>
+            <li>Retention Pacing & Caption Guide</li>
+            <li>Compatible with CapCut & Premiere</li>
+          </ul>
+          <div class="card-footer">
+            <div class="price-box">
+              <span class="old-price">$45</span>
+              <span class="price">$24</span>
+            </div>
+            <button class="buy-btn" onclick="openCheckout('Short-Form Editing & SFX Master Kit', '$24')">Get Access</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>Questions or custom bulk orders? Email us at <strong>support@digitalnest.store</strong></p>
+    <p style="margin-top: 8px; font-size: 12px;">© 2026 DigitalNest. All rights reserved.</p>
+  </footer>
+
+  <!-- Checkout Preview Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal">
+      <div class="pill" style="margin-bottom: 12px;">Instant Digital Delivery</div>
+      <h3 id="modalTitle">Product Name</h3>
+      <p>Total: <strong id="modalPrice" style="color: #fff;">$19</strong> — Connect your Gumroad or Lemon Squeezy checkout link here to accept global cards & PayPal.</p>
+      <div class="modal-actions">
+        <button class="close-btn" onclick="closeCheckout()">Close</button>
+        <a href="#products" class="btn-primary" onclick="closeCheckout()">Proceed to Checkout →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCheckout(title, price) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+    function closeCheckout() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
